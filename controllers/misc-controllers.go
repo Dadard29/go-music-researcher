@@ -12,7 +12,7 @@ var Sc *subChecker.SubChecker
 var logger = log.NewLogger("CONTROLLER", logLevel.DEBUG)
 
 const (
-	apiName = "Music-Researcher"
+	apiName = "music-researcher"
 	accessTokenKey = "X-Access-Token"
 )
 func checkToken(token string, w http.ResponseWriter) bool {

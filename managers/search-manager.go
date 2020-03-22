@@ -9,9 +9,9 @@ import (
 
 var limit = 5
 
-func YoutubeSearchManager(query string) (youtube.SearchResponseJson, error) {
+func YoutubeSearchManager(query string) ([]youtube.VideoJson, error) {
 
-	var y youtube.SearchResponseJson
+	var y []youtube.VideoJson
 
 	r, err := repositories.YoutubeSearch(query)
 	if err != nil {
@@ -19,6 +19,7 @@ func YoutubeSearchManager(query string) (youtube.SearchResponseJson, error) {
 		return y, errors.New("error searching youtube video")
 	}
 
+	y = make([]youtube.VideoJson, 0)
 	for i, item := range r.Items {
 		if i > limit {
 			break
@@ -36,8 +37,8 @@ func YoutubeSearchManager(query string) (youtube.SearchResponseJson, error) {
 	return y, nil
 }
 
-func SpotifySearchManager(query string) (spotify.SearchResponseJson, error) {
-	var s spotify.SearchResponseJson
+func SpotifySearchManager(query string) ([]spotify.TrackJson, error) {
+	var s []spotify.TrackJson
 
 	r, err := repositories.SpotifySearch(query)
 	if err != nil {
@@ -45,6 +46,7 @@ func SpotifySearchManager(query string) (spotify.SearchResponseJson, error) {
 		return s, errors.New("error searching spotify music")
 	}
 
+	s = make([]spotify.TrackJson, 0)
 	for i, item := range r.Tracks.Items {
 		if i > limit {
 			break

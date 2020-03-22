@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 )
 
 func (y *Connector) doRequest(url string, httpMethod string, output interface{}) error {
@@ -38,8 +39,9 @@ func (y *Connector) doRequest(url string, httpMethod string, output interface{})
 }
 
 func (y *Connector) Search(query string) (*SearchResponse, error) {
-	url := "https://www.googleapis.com/youtube/v3/search?part=snippet&q=%s&key=%s"
-	urlQuery := fmt.Sprintf(url, query, y.apiKey)
+	searchUrl := "https://www.googleapis.com/youtube/v3/search?part=snippet&q=%s&key=%s"
+	queryEncoded := url.QueryEscape(query)
+	urlQuery := fmt.Sprintf(searchUrl, queryEncoded, y.apiKey)
 
 	var respJson SearchResponse
 	err := y.doRequest(urlQuery, http.MethodGet, &respJson)

@@ -18,6 +18,10 @@ func YoutubeSearchGet(w http.ResponseWriter, r *http.Request) {
 	}
 
 	q := r.URL.Query().Get("q")
+	if q == "" {
+		api.Api.BuildErrorResponse(http.StatusBadRequest, "missing parameter", w)
+		return
+	}
 
 	resp, err := managers.YoutubeSearchManager(q)
 	if err != nil {
@@ -35,6 +39,10 @@ func SpotifySearchGet(w http.ResponseWriter, r *http.Request) {
 	}
 
 	q := r.URL.Query().Get("q")
+	if q == "" {
+		api.Api.BuildErrorResponse(http.StatusBadRequest, "missing parameter", w)
+		return
+	}
 
 	resp, err := managers.SpotifySearchManager(q)
 	if err != nil {

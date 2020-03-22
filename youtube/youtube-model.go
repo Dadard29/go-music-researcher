@@ -46,8 +46,6 @@ type SearchResponse struct {
 	} `json:"items"`
 }
 
-type SearchResponseJson []VideoJson
-
 type VideoJson struct {
 	VideoTitle string
 	VideoId string

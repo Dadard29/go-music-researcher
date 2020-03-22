@@ -107,8 +107,6 @@ type ArtistResponse struct {
 	URI        string `json:"uri"`
 }
 
-type SearchResponseJson []TrackJson
-
 type TrackJson struct {
 	Title string
 	Artist string
