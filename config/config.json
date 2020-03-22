@@ -1,0 +1,23 @@
+{
+  "api": {
+    "infos": {
+      "title": "Music-Researcher",
+      "description": "Research for videos and music infos",
+      "contactEmail": "florian.charpentier67@gmail.com",
+      "license": "WTFPL",
+      "licenseUrl": "http://wtfpl.net"
+    },
+    "server": {
+      "host": "0.0.0.0",
+      "port": "8083",
+      "readTimeout": "15",
+      "writeTimeout": "15",
+      "idleTimeout": "60"
+    }
+  },
+  "search": {
+    "parameters": {
+      "limit": "10"
+    }
+  }
+}
