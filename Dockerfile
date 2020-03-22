@@ -1,0 +1,25 @@
+FROM golang:1.13-alpine
+
+ARG ARG_VERSION
+ARG ARG_HOST_SUB
+ARG ARG_YT_API_KEY
+ARG ARG_SP_CLIENT_ID
+ARG ARG_SP_CLIENT_SECRET
+
+ENV VERSION=$ARG_VERSION
+ENV HOST_SUB=$ARG_HOST_SUB
+ENV YT_API_KEY=$ARG_YT_API_KEY
+ENV SP_CLIENT_ID=$ARG_SP_CLIENT_ID
+ENV SP_CLIENT_SECRET=$ARG_SP_CLIENT_SECRET
+
+ENV CORS_ORIGIN=https://dadard.fr
+
+RUN apk add --update git gcc libc-dev
+
+WORKDIR /go/src/app
+COPY . .
+
+RUN go get -d -v ./...
+RUN go install -v ./...
+
+CMD ["app"]
