@@ -8,7 +8,7 @@ import (
 
 func TestNewSpotifyConnector(t *testing.T) {
 	s, err := NewConnector(
-		os.Getenv("CLIENT_ID"), os.Getenv("CLIENT_SECRET"))
+		os.Getenv("SP_CLIENT_ID"), os.Getenv("SP_CLIENT_SECRET"))
 	if err != nil {
 		t.Error(err)
 		return
@@ -22,7 +22,7 @@ func TestNewSpotifyConnector(t *testing.T) {
 
 func TestSpotifyConnector_Search(t *testing.T) {
 	s, err := NewConnector(
-		os.Getenv("CLIENT_ID"), os.Getenv("CLIENT_SECRET"))
+		os.Getenv("SP_CLIENT_ID"), os.Getenv("SP_CLIENT_SECRET"))
 	if err != nil {
 		t.Error(err)
 		return
