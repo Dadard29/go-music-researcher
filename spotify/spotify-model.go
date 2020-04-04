@@ -108,9 +108,12 @@ type ArtistResponse struct {
 }
 
 type TrackJson struct {
+	ID string
 	Title string
 	Artist string
 	Album string
 	Date string
 	Genre []string
+	ImageURL string
+	PreviewURL string
 }

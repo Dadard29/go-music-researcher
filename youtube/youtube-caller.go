@@ -50,5 +50,17 @@ func (y *Connector) Search(query string) (*SearchResponse, error) {
 	}
 
 	return &respJson, nil
+}
 
+func (y *Connector) GetVideo(videoId string) (*GetVideoResponse, error) {
+	getVideoUrl := "https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=%s&key=%s"
+	urlQuery := fmt.Sprintf(getVideoUrl, videoId, y.apiKey)
+
+	var respJson GetVideoResponse
+	err := y.doRequest(urlQuery, http.MethodGet, &respJson)
+	if err != nil {
+		return nil, err
+	}
+
+	return &respJson, nil
 }
