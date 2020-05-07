@@ -35,6 +35,7 @@ func (y *Connector) doRequest(url string, httpMethod string, output interface{})
 		return err
 	}
 
+	y.RequestsDone += 1
 	return nil
 }
 

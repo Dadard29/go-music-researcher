@@ -3,11 +3,13 @@ package repositories
 import (
 	"github.com/Dadard29/go-music-researcher/spotify"
 	"github.com/Dadard29/go-music-researcher/youtube"
+	"strconv"
 )
 
 func YoutubeSearch(query string) (youtube.SearchResponse, error) {
 	var y youtube.SearchResponse
 	r, err := youtubeConnector.Search(query)
+	logger.Debug(strconv.Itoa(youtubeConnector.RequestsDone) + " requests done since launch")
 	if err != nil {
 		return y, err
 	}
@@ -18,6 +20,7 @@ func YoutubeSearch(query string) (youtube.SearchResponse, error) {
 func YoutubeGetVideo(videoId string) (youtube.GetVideoResponse, error) {
 	var y youtube.GetVideoResponse
 	r, err := youtubeConnector.GetVideo(videoId)
+	logger.Debug(strconv.Itoa(youtubeConnector.RequestsDone) + " requests done since launch")
 	if err != nil {
 		return y, err
 	}
