@@ -11,12 +11,6 @@ import (
 )
 
 var routes = service.RouteMapping{
-	"/search/youtube": service.Route{
-		Description:   "search in youtube video from user query",
-		MethodMapping: service.MethodMapping{
-			http.MethodGet: controllers.YoutubeSearchGet,
-		},
-	},
 	"/search/spotify": service.Route{
 		Description:   "search in spotify music from user query",
 		MethodMapping: service.MethodMapping{
